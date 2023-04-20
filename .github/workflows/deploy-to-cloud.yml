@@ -26,7 +26,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: server
           push: true
           tags: gcr.io/refined-dogfish-353918/exwoo
 
@@ -43,8 +43,8 @@ jobs:
 
       - name: Deploy to Cloud Run
         run: |
-          gcloud run deploy exwoo \
-            --image gcr.io/refined-dogfish-353918/exwoo \
+          gcloud run deploy fluxr \
+            --image gcr.io/refined-dogfish-353918/fluxr \
             --platform managed \
             --region southamerica-east1 \
             --allow-unauthenticated
